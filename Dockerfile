@@ -17,3 +17,5 @@ ENV HERCULES_SRC=${WORKSPACE}/Hercules
 COPY . ${WORKSPACE}
 
 RUN cd ${HERCULES_SRC} && ./configure --enable-packetver=${HERCULES_PACKET_VERSION}
+
+RUN cd ${HERCULES_SRC} && make
