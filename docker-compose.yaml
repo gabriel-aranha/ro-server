@@ -5,10 +5,24 @@ services:
     image: hercules
     build: .
     restart: unless-stopped
+    environment:
+      HERCULES_DB_HOST: database
+      HERCULES_DB_PORT: 3306
+      HERCULES_DB_USERNAME: ragnarok
+      HERCULES_DB_PASSWORD: ragnarok
+      HERCULES_DB_NAME: ragnarok
+      HERCULES_INTERSERVER_USER: wisp
+      HERCULES_INTERSERVER_PASSWORD: wisp
     ports:
       - 6900:6900
       - 6121:6121
       - 5121:5121
+    volumes:
+      - configuration:/build/Hercules/conf/import
+      - sql_init:/build/Hercules/sql-files
+    depends_on:
+      - database
+
   database:
     image: mariadb:lts
     restart: unless-stopped
@@ -26,5 +40,6 @@ services:
       - sql_init:/docker-entrypoint-initdb.d
 
 volumes:
+  configuration:
   mysql_data:
   sql_init:
