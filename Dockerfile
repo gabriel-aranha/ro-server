@@ -2,6 +2,8 @@ FROM debian:bullseye-slim
 
 ARG HERCULES_PACKET_VERSION=20130807
 
+RUN useradd --no-log-init -r hercules
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
     make \
@@ -10,8 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libmariadb-dev-compat \
     zlib1g-dev \
     libpcre3-dev \
-    git \
-    screen
+    git
 
 ENV BUILD_WORKSPACE=/build
 ENV HERCULES_SRC=${BUILD_WORKSPACE}/Hercules
@@ -25,5 +26,7 @@ RUN cd ${HERCULES_SRC} && make
 RUN cp -r ${BUILD_WORKSPACE}/templates/. ${HERCULES_SRC}
 
 EXPOSE 6900 6121 5121
+
+USER hercules
 
 CMD [ "build/Hercules/docker-entrypoint.sh"  ]

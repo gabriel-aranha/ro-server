@@ -1,7 +1,7 @@
 #!/bin/bash
 
-servers=( login-server char-server map-server )
-for server in "${servers[@]}"; do
-    screen -dmS "$server" -L -Logfile "/Hercules/log/$server.log" "/Hercules/$server"
+SERVERS=( login-server char-server map-server )
+
+for SERVER in "${SERVERS[@]}"; do
+    ./build/Hercules/${SERVER}
 done
-tail -f /Hercules/log/*.log
