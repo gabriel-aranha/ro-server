@@ -29,4 +29,6 @@ EXPOSE 6900 6121 5121
 
 USER hercules
 
-CMD [ "build/Hercules/docker-entrypoint.sh"  ]
+WORKDIR /build/Hercules
+
+CMD [ "./docker-entrypoint.sh"  ]
