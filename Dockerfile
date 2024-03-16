@@ -19,11 +19,13 @@ ENV HERCULES_SRC=${BUILD_WORKSPACE}/Hercules
 
 COPY . ${BUILD_WORKSPACE}
 
-RUN cd ${HERCULES_SRC} && ./configure --disable-renewal --enable-packetver=${HERCULES_PACKET_VERSION}
+RUN cd ${HERCULES_SRC} && ./configure --disable-manager --disable-renewal --enable-packetver=${HERCULES_PACKET_VERSION}
 
 RUN cd ${HERCULES_SRC} && make
 
 RUN cp -r ${BUILD_WORKSPACE}/templates/. ${HERCULES_SRC}
+
+RUN rm ${HERCULES_SRC}/sql-files/*_re.sql
 
 EXPOSE 6900 6121 5121
 
