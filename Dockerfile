@@ -1,6 +1,6 @@
 FROM debian:bullseye-slim
 
-ARG HERCULES_PACKET_VERSION=20130807
+ARG HERCULES_PACKET_VERSION=20220406
 
 RUN useradd --no-log-init -r hercules
 
@@ -19,13 +19,15 @@ ENV HERCULES_SRC=${BUILD_WORKSPACE}/Hercules
 
 COPY . ${BUILD_WORKSPACE}
 
-RUN cd ${HERCULES_SRC} && ./configure --disable-manager --disable-renewal --enable-packetver=${HERCULES_PACKET_VERSION}
+RUN cd ${HERCULES_SRC} && ./configure --disable-manager --enable-packetver=${HERCULES_PACKET_VERSION}
 
 RUN cd ${HERCULES_SRC} && make
 
 RUN cp -r ${BUILD_WORKSPACE}/templates/. ${HERCULES_SRC}
 
-RUN rm ${HERCULES_SRC}/sql-files/*_re.sql
+RUN rm ${HERCULES_SRC}/sql-files/item_db.sql
+RUN rm ${HERCULES_SRC}/sql-files/mob_db.sql
+RUN rm ${HERCULES_SRC}/sql-files/mob_skill_db.sql
 
 EXPOSE 6900 6121 5121
 
