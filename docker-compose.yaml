@@ -5,14 +5,6 @@ services:
     image: hercules
     build: .
     restart: unless-stopped
-    environment:
-      HERCULES_DB_HOST: database
-      HERCULES_DB_PORT: 3306
-      HERCULES_DB_USERNAME: ragnarok
-      HERCULES_DB_PASSWORD: ragnarok
-      HERCULES_DB_NAME: ragnarok
-      HERCULES_INTERSERVER_USER: s1
-      HERCULES_INTERSERVER_PASSWORD: p1
     ports:
       - 6900:6900
     volumes:
@@ -26,14 +18,6 @@ services:
     image: hercules
     build: .
     restart: unless-stopped
-    environment:
-      HERCULES_DB_HOST: database
-      HERCULES_DB_PORT: 3306
-      HERCULES_DB_USERNAME: ragnarok
-      HERCULES_DB_PASSWORD: ragnarok
-      HERCULES_DB_NAME: ragnarok
-      HERCULES_INTERSERVER_USER: s1
-      HERCULES_INTERSERVER_PASSWORD: p1
     ports:
       - 6121:6121
     volumes:
@@ -47,14 +31,6 @@ services:
     image: hercules
     build: .
     restart: unless-stopped
-    environment:
-      HERCULES_DB_HOST: database
-      HERCULES_DB_PORT: 3306
-      HERCULES_DB_USERNAME: ragnarok
-      HERCULES_DB_PASSWORD: ragnarok
-      HERCULES_DB_NAME: ragnarok
-      HERCULES_INTERSERVER_USER: s1
-      HERCULES_INTERSERVER_PASSWORD: p1
     ports:
       - 5121:5121
     volumes:
@@ -72,8 +48,6 @@ services:
       MYSQL_USER: ragnarok
       MYSQL_PASSWORD: ragnarok
       MYSQL_DATABASE: ragnarok
-      INTERSERVER_USER: s1
-      INTERSERVER_PASSWORD: p1
     ports:
       - 3306:3306
     volumes:
