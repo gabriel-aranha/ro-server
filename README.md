@@ -1,4 +1,5 @@
 # ro-server
 ### To do
-Fix some quest references on client
-Fix server rates
+Fix some quest translation references on client
+Fix src build root permissions
+Bump client and hercules to latest and 20220406
