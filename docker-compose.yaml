@@ -10,7 +10,7 @@ services:
     volumes:
       - configuration:/build/Hercules/conf/import
       - sql_init:/build/Hercules/sql-files
-    command: ["./login-server"]
+    command: [ "./login-server" ]
     depends_on:
       - database
 
@@ -23,7 +23,7 @@ services:
     volumes:
       - configuration:/build/Hercules/conf/import
       - sql_init:/build/Hercules/sql-files
-    command: ["./char-server"]
+    command: [ "./char-server" ]
     depends_on:
       - login-server
 
@@ -36,7 +36,7 @@ services:
     volumes:
       - configuration:/build/Hercules/conf/import
       - sql_init:/build/Hercules/sql-files
-    command: ["./map-server"]
+    command: [ "./map-server" ]
     depends_on:
       - char-server
 
