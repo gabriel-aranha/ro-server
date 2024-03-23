@@ -1,6 +1,6 @@
 FROM debian:bullseye-slim
 
-ARG HERCULES_PACKET_VERSION=20220330
+ARG HERCULES_PACKET_VERSION=20220406
 
 RUN useradd --no-log-init -r hercules
 

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "Starting all servers..."
+echo "Placeholder entrypoint..."
